@@ -23,12 +23,10 @@ let package = Package(
     products: [
         .library(name: "Moya", targets: ["Moya"]),
         .library(name: "CombineMoya", targets: ["CombineMoya"]),
-        .library(name: "ReactiveMoya", targets: ["ReactiveMoya"]),
         .library(name: "RxMoya", targets: ["RxMoya"])
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.0.0")),
-        .package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "4.0.0")), // dev
         .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "9.0.0")), // dev
@@ -51,13 +49,6 @@ let package = Package(
             ]
         ),
         .target(
-            name: "ReactiveMoya",
-            dependencies: [
-                "Moya",
-                .product(name: "ReactiveSwift", package: "ReactiveSwift")
-            ]
-        ),
-        .target(
             name: "RxMoya",
             dependencies: [
                 "Moya",
@@ -69,7 +60,6 @@ let package = Package(
             dependencies: [
                 "Moya",
                 "CombineMoya",
-                "ReactiveMoya",
                 "RxMoya",
                 .product(name: "Quick", package: "Quick"),
                 .product(name: "Nimble", package: "Nimble"),
